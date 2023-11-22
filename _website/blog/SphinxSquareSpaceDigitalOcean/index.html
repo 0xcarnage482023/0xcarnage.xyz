@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Setting up a simple blog using sphinx and ablog using a SquareSpace domain &amp; DigitalOcean droplet &#8212; Carnage  documentation</title>
+    <title>Setting up a simple blog using sphinx and ablog using a SquareSpace domain, Nginx &amp; DigitalOcean droplet &#8212; Carnage  documentation</title>
   
   
   
@@ -308,9 +308,175 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-<section id="setting-up-a-simple-blog-using-sphinx-and-ablog-using-a-squarespace-domain-digitalocean-droplet">
-<h1>Setting up a simple blog using sphinx and ablog using a SquareSpace domain &amp; DigitalOcean droplet<a class="headerlink" href="#setting-up-a-simple-blog-using-sphinx-and-ablog-using-a-squarespace-domain-digitalocean-droplet" title="Permalink to this heading">#</a></h1>
-<p>TODO TODO TODO</p>
+<section id="setting-up-a-simple-blog-using-sphinx-and-ablog-using-a-squarespace-domain-nginx-digitalocean-droplet">
+<h1>Setting up a simple blog using sphinx and ablog using a SquareSpace domain, Nginx &amp; DigitalOcean droplet<a class="headerlink" href="#setting-up-a-simple-blog-using-sphinx-and-ablog-using-a-squarespace-domain-nginx-digitalocean-droplet" title="Permalink to this heading">#</a></h1>
+<section id="buying-a-domain-on-squarespace-and-droplet-on-digital-ocean">
+<h2>Buying a domain on squarespace and droplet on Digital Ocean:<a class="headerlink" href="#buying-a-domain-on-squarespace-and-droplet-on-digital-ocean" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Buy a domain on squarespace.</p></li>
+<li><p>Create an Ubuntu droplet on Digital Ocean.</p></li>
+</ol>
+</section>
+<section id="installing-anaconda-and-building-the-website-using-sphinx-and-ablog">
+<h2>Installing Anaconda and building the website using sphinx and ablog:<a class="headerlink" href="#installing-anaconda-and-building-the-website-using-sphinx-and-ablog" title="Permalink to this heading">#</a></h2>
+<ol class="arabic" start="3">
+<li><p>Once you create the droplet above, ssh into it as root, create a separate user if you want and install anaconda.</p></li>
+<li><p>Once you install the conda environment, install the following python libraries via pip:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span> <span class="n">ablog</span> <span class="n">pydata_sphinx_theme</span> <span class="n">sphinx_panels</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Sphinx: A documentation engine written and used by the Python community.</p>
+<p>ablog: A Sphinx extension that converts any documentation or personal website into a blog.</p>
+<p>pydata_sphinx_theme: A simple, Bootstrap-based Sphinx theme made by the PyData community.</p>
+<p>sphinx_panels: A Sphinx extension for creating panels in a grid layout or as drop-downs.</p>
+</div></blockquote>
+</li>
+<li><p>Create a source directory where all the configuration files will be placed.</p></li>
+<li><p>Run the following command in the terminal and answer the follow-ups as shown in the example</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sphinx-quickstart
+Welcome<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>Sphinx<span class="w"> </span><span class="m">5</span>.0.2<span class="w"> </span>quickstart<span class="w"> </span>utility.
+
+Please<span class="w"> </span>enter<span class="w"> </span>values<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>settings<span class="w"> </span><span class="o">(</span>just<span class="w"> </span>press<span class="w"> </span>Enter<span class="w"> </span>to
+accept<span class="w"> </span>a<span class="w"> </span>default<span class="w"> </span>value,<span class="w"> </span><span class="k">if</span><span class="w"> </span>one<span class="w"> </span>is<span class="w"> </span>given<span class="w"> </span><span class="k">in</span><span class="w"> </span>brackets<span class="o">)</span>.
+
+Selected<span class="w"> </span>root<span class="w"> </span>path:<span class="w"> </span>.
+
+You<span class="w"> </span>have<span class="w"> </span>two<span class="w"> </span>options<span class="w"> </span><span class="k">for</span><span class="w"> </span>placing<span class="w"> </span>the<span class="w"> </span>build<span class="w"> </span>directory<span class="w"> </span><span class="k">for</span><span class="w"> </span>Sphinx<span class="w"> </span>output.
+Either,<span class="w"> </span>you<span class="w"> </span>use<span class="w"> </span>a<span class="w"> </span>directory<span class="w"> </span><span class="s2">&quot;_build&quot;</span><span class="w"> </span>within<span class="w"> </span>the<span class="w"> </span>root<span class="w"> </span>path,<span class="w"> </span>or<span class="w"> </span>you<span class="w"> </span>separate
+<span class="s2">&quot;source&quot;</span><span class="w"> </span>and<span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="w"> </span>directories<span class="w"> </span>within<span class="w"> </span>the<span class="w"> </span>root<span class="w"> </span>path.
+&gt;<span class="w"> </span>Separate<span class="w"> </span><span class="nb">source</span><span class="w"> </span>and<span class="w"> </span>build<span class="w"> </span>directories<span class="w"> </span><span class="o">(</span>y/n<span class="o">)</span><span class="w"> </span><span class="o">[</span>n<span class="o">]</span>:
+
+The<span class="w"> </span>project<span class="w"> </span>name<span class="w"> </span>will<span class="w"> </span>occur<span class="w"> </span><span class="k">in</span><span class="w"> </span>several<span class="w"> </span>places<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>built<span class="w"> </span>documentation.
+&gt;<span class="w"> </span>Project<span class="w"> </span>name:<span class="w"> </span>Carnage
+&gt;<span class="w"> </span>Author<span class="w"> </span>name<span class="o">(</span>s<span class="o">)</span>:<span class="w"> </span>0xCarnage
+&gt;<span class="w"> </span>Project<span class="w"> </span>release<span class="w"> </span><span class="o">[]</span>:<span class="w"> </span><span class="m">1</span>.0
+
+If<span class="w"> </span>the<span class="w"> </span>documents<span class="w"> </span>are<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>written<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>language<span class="w"> </span>other<span class="w"> </span>than<span class="w"> </span>English,
+you<span class="w"> </span>can<span class="w"> </span><span class="k">select</span><span class="w"> </span>a<span class="w"> </span>language<span class="w"> </span>here<span class="w"> </span>by<span class="w"> </span>its<span class="w"> </span>language<span class="w"> </span>code.<span class="w"> </span>Sphinx<span class="w"> </span>will<span class="w"> </span><span class="k">then</span>
+translate<span class="w"> </span>text<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </span>generates<span class="w"> </span>into<span class="w"> </span>that<span class="w"> </span>language.
+
+For<span class="w"> </span>a<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>supported<span class="w"> </span>codes,<span class="w"> </span>see
+https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-language.
+&gt;<span class="w"> </span>Project<span class="w"> </span>language<span class="w"> </span><span class="o">[</span>en<span class="o">]</span>:<span class="w"> </span>en
+
+Creating<span class="w"> </span>file<span class="w"> </span>/home/carnage/sphinxblog/conf.py.
+Creating<span class="w"> </span>file<span class="w"> </span>/home/carnage/sphinxblog/index.rst.
+Creating<span class="w"> </span>file<span class="w"> </span>/home/carnage/sphinxblog/Makefile.
+Creating<span class="w"> </span>file<span class="w"> </span>/home/carnage/sphinxblog/make.bat.
+</pre></div>
+</div>
+</li>
+<li><p>The directory would look something like this:</p>
+<blockquote>
+<div><p><em>_build/</em></p>
+<p><em>_static/</em></p>
+<p><em>_templates/</em></p>
+<p><em>conf.py</em></p>
+<p><em>make.bat</em></p>
+<p><em>index.rst</em></p>
+<p><em>Makefile</em></p>
+</div></blockquote>
+</li>
+<li><p>Open up <cite>conf.py</cite> and update the <cite>extensions</cite> &amp; <cite>html_theme</cite> section as follows:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+<span class="s2">&quot;ablog&quot;</span><span class="p">,</span>
+<span class="s2">&quot;sphinx.ext.intersphinx&quot;</span><span class="p">,</span>
+<span class="s2">&quot;sphinx_panels&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s2">&quot;pydata_sphinx_theme&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Run <cite>ablog build</cite> to build the static pages. A directory called <cite>_websites</cite> will be created which will contain all the required htm, css and js files. The directory would look something like this at this stage:</p>
+<blockquote>
+<div><p><em>_build/</em></p>
+<p><em>_static/</em></p>
+<p><em>_templates/</em></p>
+<p><em>_website/</em></p>
+<p><em>conf.py</em></p>
+<p><em>make.bat</em></p>
+<p><em>index.rst</em></p>
+<p><em>Makefile</em></p>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="setting-up-ngnix">
+<h2>Setting up ngnix<a class="headerlink" href="#setting-up-ngnix" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple" start="10">
+<li><p>Install nginx using the following command:</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nginx
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic" start="11">
+<li><p>The default directory for serving webpages is <cite>/var/www/html/</cite>. So we are going to move the entire <cite>_websites</cite> directory we created above to <cite>/var/www/html/</cite>.</p></li>
+<li><p>Open up the nginx conf using the command <cite>sudo nano /etc/nginx/sites-available/default</cite> and add <cite>/var/www/html/_website/</cite> to the <cite>root</cite> section of the file in <cite>server</cite> block. It should look something like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">##</span>
+<span class="c1"># You should look at the following URL&#39;s in order to grasp a solid understanding</span>
+<span class="c1"># of Nginx configuration files in order to fully unleash the power of Nginx.</span>
+<span class="c1"># https://www.nginx.com/resources/wiki/start/</span>
+<span class="c1"># https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/</span>
+<span class="c1"># https://wiki.debian.org/Nginx/DirectoryStructure</span>
+<span class="c1">#</span>
+<span class="c1"># In most cases, administrators will remove this file from sites-enabled/ and</span>
+<span class="c1"># leave it as reference inside of sites-available where it will continue to be</span>
+<span class="c1"># updated by the nginx packaging team.</span>
+<span class="c1">#</span>
+<span class="c1"># This file will automatically load configuration files provided by other</span>
+<span class="c1"># applications, such as Drupal or Wordpress. These applications will be made</span>
+<span class="c1"># available underneath a path with that package name, such as /drupal8.</span>
+<span class="c1">#</span>
+<span class="c1"># Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.</span>
+<span class="c1">##</span>
+
+<span class="c1"># Default server configuration</span>
+<span class="c1">#</span>
+server<span class="w"> </span><span class="o">{</span>
+
+<span class="w">    </span><span class="c1"># SSL configuration</span>
+<span class="w">    </span><span class="c1">#</span>
+<span class="w">    </span><span class="c1"># listen 443 ssl default_server;</span>
+<span class="w">    </span><span class="c1"># listen [::]:443 ssl default_server;</span>
+<span class="w">    </span><span class="c1">#</span>
+<span class="w">    </span><span class="c1"># Note: You should disable gzip for SSL traffic.</span>
+<span class="w">    </span><span class="c1"># See: https://bugs.debian.org/773332</span>
+<span class="w">    </span><span class="c1">#</span>
+<span class="w">    </span><span class="c1"># Read up on ssl_ciphers to ensure a secure configuration.</span>
+<span class="w">    </span><span class="c1"># See: https://bugs.debian.org/765782</span>
+<span class="w">    </span><span class="c1">#</span>
+<span class="w">    </span><span class="c1"># Self signed certs generated by the ssl-cert package</span>
+<span class="w">    </span><span class="c1"># Don&#39;t use them in a production server!</span>
+<span class="w">    </span><span class="c1">#</span>
+<span class="w">    </span><span class="c1"># include snippets/snakeoil.conf;</span>
+
+<span class="w">    </span>root<span class="w"> </span>/var/www/html/_website/<span class="p">;</span>
+
+<span class="w">    </span>...
+<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div></div></blockquote>
+<ol class="arabic" start="13">
+<li><p>At this point if you hit up the droplet’s IP address on the browser search bar. You’d see a page similar to this:</p>
+<img alt="../../_images/1.png" src="../../_images/1.png" />
+</li>
+</ol>
+<p>Now, we’ll be looking at how do we connect the domain bought on squarespace with the DO droplet’s IP address.</p>
+</section>
+<section id="connecting-the-squarespace-domain-with-do-droplet-s-ip">
+<h2>Connecting the Squarespace domain with DO droplet’s IP<a class="headerlink" href="#connecting-the-squarespace-domain-with-do-droplet-s-ip" title="Permalink to this heading">#</a></h2>
+<p>TODO</p>
+</section>
 </section>
 
 <div class="section ablog__blog_comments">
@@ -349,6 +515,19 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#buying-a-domain-on-squarespace-and-droplet-on-digital-ocean">Buying a domain on squarespace and droplet on Digital Ocean:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-anaconda-and-building-the-website-using-sphinx-and-ablog">Installing Anaconda and building the website using sphinx and ablog:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-ngnix">Setting up ngnix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-the-squarespace-domain-with-do-droplet-s-ip">Connecting the Squarespace domain with DO droplet’s IP</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   <div class="tocsection sourcelink">
